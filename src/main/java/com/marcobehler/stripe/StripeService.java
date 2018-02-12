@@ -18,16 +18,15 @@ public class StripeService {
 
     private Logger logger = LoggerFactory.getLogger(StripeService.class);
 
-    private String apiKey = " PUT STRIPE KEY HERE";
 
-    public Charge charge(String token, Integer amountinCents) {
-        Stripe.apiKey = apiKey;
+    public Charge charge(String customerToken, Integer amountInCents) {
+        Stripe.apiKey = "---PUT STRIPE KEY HERE---";
 
         Map<String, Object> params = new HashMap<>();
-        params.put("amount", amountinCents);
+        params.put("amount", amountInCents);
         params.put("currency", "USD");
-        params.put("description", "This is a test");
-        params.put("source", token);
+        params.put("description", "This is a test transaction");
+        params.put("source", customerToken);
 
         try {
             return Charge.create(params);
