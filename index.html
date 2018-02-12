@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Agile Testing: Stripe Payments</title>
+</head>
+<body>
+
+<div class="row">
+    <div class="col-6 mx-auto">
+        <div class="text-center">
+
+            <h1 class="mt-4">Agile Testing: Stripe Payments</h1>
+
+            <form>
+                <div class="form-row pt-4">
+
+                    <div class="col-md-12 pr-4">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane show active" id="method-cc" role="tabpanel" aria-labelledby="home-tab">
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-8">
+                                        <label for="inputCC">Credit Card Number (no spaces)</label>
+                                        <input type="text" maxlength="16" value="" class="form-control card-number" id="inputCC" data-parsley-trigger="change" placeholder="Credit Card Number" required="">
+                                    </div>
+
+                                    <div class="form-group col-md-4 pl-4">
+                                        <img src="https://cdn.marcobehler.com/website/assets/img/visa.png" style="width: 50px">
+
+                                        <img src="https://cdn.marcobehler.com/website/assets/img/mastercard.png" style="width: 50px">
+                                        <img src="https://cdn.marcobehler.com/website/assets/img/american_express.png" style="width: 50px">
+                                        <img src="https://cdn.marcobehler.com/website/assets/img/diners_club.png" style="width: 50px">
+                                        <img src="https://cdn.marcobehler.com/website/assets/img/discover.png" style="width: 50px">
+                                        <img src="https://cdn.marcobehler.com/website/assets/img/jcb.png" style="width: 50px">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-3">
+                                        <label for="inputExpiryMOnth">Expiry (MM)*</label><br>
+                                        <select class="form-control card-expiry-month" id="inputExpiryMOnth" data-parsley-trigger="change" required="">
+                                            <option value="">Choose..</option>
+                                            <option value="01">01
+                                            </option><option value="02">02
+                                        </option><option value="03">03
+                                        </option><option value="04">04
+                                        </option><option value="05">05
+                                        </option><option value="06">06
+                                        </option><option value="07">07
+                                        </option><option value="08">08
+                                        </option><option value="09">09
+                                        </option><option value="10">10
+                                        </option><option value="11">11
+                                        </option><option value="12">12</option></select>
+
+                                    </div>
+
+                                    <div class="form-group col-md-2">
+                                        <label for="inputExpiryYear">Expiry (YY)</label><br>
+
+                                        <select class="form-control card-expiry-year" id="inputExpiryYear" data-parsley-trigger="change" required="">
+                                            <option value="">Choose..</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="inputSecurity">Security Code*</label>
+                                        <input type="password" class="form-control card-cvc" id="inputSecurity" data-parsley-trigger="change" placeholder="Security Code (on back)" required="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row mb-3">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Subscribe Now </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
