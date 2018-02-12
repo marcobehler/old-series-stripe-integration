@@ -18,7 +18,7 @@ public class StripeService {
 
     private Logger logger = LoggerFactory.getLogger(StripeService.class);
 
-    private String apiKey = "TODO";
+    private String apiKey = " PUT STRIPE KEY HERE";
 
     public Charge charge(String token, Integer amountinCents) {
         Stripe.apiKey = apiKey;
@@ -30,12 +30,11 @@ public class StripeService {
         params.put("source", token);
 
         try {
-            Charge charge = Charge.create(params);
-            return charge;
+            return Charge.create(params);
         } catch (Exception e) {
             logger.error("Problem charging card", e);
+            return null;
         }
-        return null;
     }
 
 }
