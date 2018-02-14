@@ -24,6 +24,5 @@ public class StripeServiceTest {
         Charge charge = stripeService.charge("tok_visa", 1123);
         assertThat(charge).isNotNull();
         assertThat(charge.getStatus()).isEqualTo("succeeded");
-
     }
 }
