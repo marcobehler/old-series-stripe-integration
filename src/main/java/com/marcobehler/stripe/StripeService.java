@@ -4,6 +4,7 @@ import com.stripe.Stripe;
 import com.stripe.model.Charge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,10 +17,16 @@ import java.util.Map;
 @Service
 public class StripeService {
 
-    private Logger logger = LoggerFactory.getLogger(StripeService.class);
+    private static final Logger logger = LoggerFactory.getLogger(StripeService.class);
+
+    private String stripeSecretKey;
+
+    public StripeService(@Value("${stripe.secretKey}") String stripeSecretKey) {
+        this.stripeSecretKey = stripeSecretKey;
+    }
 
     public Charge charge(String token, Integer amountInCents) {
-        Stripe.apiKey = "sk_test_zcNGUB0X6rgQMFLRmfcHpzUv";
+        Stripe.apiKey = stripeSecretKey;
 
         Map<String, Object> params = new HashMap<>();
         params.put("amount", amountInCents);
