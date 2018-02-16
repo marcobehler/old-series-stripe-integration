@@ -78,19 +78,11 @@ public class StripeService {
         catch (CardException e) {
             handleCardException(e);
             return null;
-        } catch (APIConnectionException e) {
-            handleAPIConnectionException(e);
-            return null;
         }
         catch (Exception e) {
             logger.error("Problem charging card", e);
             return null;
         }
-    }
-
-    private void handleAPIConnectionException(APIConnectionException e) {
-        // TODO what to do? retry? what if transaction happened on stripes side?  contact customer? contact yourself?
-        throw new RuntimeException(e);
     }
 
     private void handleCardException(CardException e) {
