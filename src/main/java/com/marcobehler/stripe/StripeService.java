@@ -75,6 +75,10 @@ public class StripeService {
         try {
             return Charge.create(params);
         }
+        catch (APIConnectionException e) {
+            handleAPIConnectionException(e);
+            return null;
+        }
         catch (CardException e) {
             handleCardException(e);
             return null;
@@ -83,6 +87,12 @@ public class StripeService {
             logger.error("Problem charging card", e);
             return null;
         }
+    }
+
+    private void handleAPIConnectionException(APIConnectionException e) {
+        // TODO are you gonna retry the call? notify the customer? notify yourself?
+        // double bookings?
+        throw new RuntimeException(e);
     }
 
     private void handleCardException(CardException e) {
