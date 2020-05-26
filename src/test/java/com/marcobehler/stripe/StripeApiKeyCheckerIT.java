@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 /**
  * Thanks for watching this episode! Send any feedback to info@marcobehler.com!
  */
-public class StripeApiKeyCheckerTest {
+public class StripeApiKeyCheckerIT {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

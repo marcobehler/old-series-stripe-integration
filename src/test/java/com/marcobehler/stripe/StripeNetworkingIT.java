@@ -1,5 +1,6 @@
 package com.marcobehler.stripe;
 
+import com.stripe.Stripe;
 import com.stripe.exception.APIConnectionException;
 import com.stripe.exception.AuthenticationException;
 import org.junit.After;
@@ -33,7 +34,7 @@ import static org.hamcrest.core.Is.isA;
         "stripe.connectTimeout=1000",
         "stripe.readTimeout=1000"
 })
-public class StripeNetworkingTest {
+public class StripeNetworkingIT {
 
     @Autowired
     private StripeService stripeService;
@@ -50,6 +51,13 @@ public class StripeNetworkingTest {
                 .respond(HttpResponse.response().withDelay(TimeUnit.SECONDS,5)
                         .withBody("Hey, this is stripe!"));
         SSLDisabler.ignoreAllSSLCertificates();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        Stripe.setConnectionProxy(null);
+        Stripe.setReadTimeout(-1);
+        Stripe.setConnectTimeout(-1);
     }
 
     @Test

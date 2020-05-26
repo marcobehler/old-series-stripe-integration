@@ -1,6 +1,7 @@
 package com.marcobehler.stripe;
 
 import com.stripe.model.Charge;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = StripeConfig.class)
-public class StripeServiceTest {
+public class StripeServiceIT {
 
     @Autowired
     private StripeService stripeService;
@@ -27,6 +28,11 @@ public class StripeServiceTest {
     public void setUp() throws Exception {
         wiser = new Wiser(25);
         wiser.start();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        wiser.stop();
     }
 
     @Test
